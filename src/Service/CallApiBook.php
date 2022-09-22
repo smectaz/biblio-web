@@ -14,9 +14,11 @@ class CallApiBook
     }
     public function getBookData(): array
     {
+        
        $response = $this -> client -> request(
         'GET',
-        'https://127.0.0.1:8000/apip/books?page=1'
+        'https://127.0.0.1:8000/apip/books?page=1',
+        ['auth_bearer' => $this-> user ->getUser()]
        );
 
         return $response -> toArray();
